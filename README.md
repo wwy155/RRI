@@ -12,8 +12,12 @@ Download [SFE](https://huggingface.co/datasets/InternScience/SFE) (`20250611-en/
 
 ## Run
 
+The MLLM and the LLM judges are called through an OpenAI-compatible API.
+
 ```bash
-python run_rri.py --data /path/to/SFE --lang en --pred mllm_predictions.jsonl --out outputs
+export OPENAI_API_KEY=...
+export OPENAI_BASE_URL=https://api.openai.com/v1
+python run_rri.py --data /path/to/SFE --model <mllm>
 ```
 
-`--pred` (optional) is a JSONL file with one `{"id": ..., "pred": ...}` per item. The readings are written to `outputs/rri_readings.jsonl` and the final answers to `outputs/predictions.jsonl`.
+Answers, judge scores and per-discipline results are written to `outputs/`.
