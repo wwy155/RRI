@@ -28,9 +28,6 @@ import rri
 
 FIELDS = ("astronomy", "chemistry", "earth", "life", "material")
 
-# The paper scores the 819 items of all tasks except E018.
-SKIP_TASKS = ("E018",)
-
 TYPE_NOTE = {
     "mcq": "The question is a multiple-choice question. "
            "Answer with the option letter from the given choices.",
@@ -153,8 +150,6 @@ def main():
     items, missing = [], 0
     for doc in pq.read_table(os.path.join(args.data, "20250611-" + args.lang,
                                           "test.parquet")).to_pylist():
-        if doc["id"].split("/")[0] in SKIP_TASKS:
-            continue
         paths = [os.path.join(args.data, "images", os.path.basename(str(p).replace("\\", "/")))
                  for p in doc["images"] or []]
         missing += sum(not os.path.exists(p) for p in paths)
