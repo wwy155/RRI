@@ -1,6 +1,7 @@
 # Render-Reading Instruments
 
 Code for *Render-Reading Instruments for Scientific Visual Question Answering*.
+The supplementary material is in [`supplementary.pdf`](supplementary.pdf).
 
 ## Setup
 
